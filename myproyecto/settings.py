@@ -1,4 +1,5 @@
 from pathlib import Path
+import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -70,17 +71,21 @@ WSGI_APPLICATION = 'myproyecto.wsgi.application'
 
 # Database
 # Cambia a la configuración de tu base de datos MySQL en Render
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': os.getenv('DB_NAME', 'turismo_db'),  # Usar variable de entorno para la base de datos
+#        'USER': os.getenv('DB_USER', 'turismo_user'),  # Usar variable de entorno para el usuario
+#        'PASSWORD': os.getenv('DB_PASSWORD', 'egk85x?{r^&7'),  # Usar variable de entorno para la contraseña
+#        'HOST': os.getenv('DB_HOST', 'localhost'),  # Usar variable de entorno para el host
+#        'PORT': os.getenv('DB_PORT', '3306'),  # Usar variable de entorno para el puerto
+#    }
+#}
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'turismo_db'),  # Usar variable de entorno para la base de datos
-        'USER': os.getenv('DB_USER', 'turismo_user'),  # Usar variable de entorno para el usuario
-        'PASSWORD': os.getenv('DB_PASSWORD', 'egk85x?{r^&7'),  # Usar variable de entorno para la contraseña
-        'HOST': os.getenv('DB_HOST', 'riotur.co'),  # Usar variable de entorno para el host
-        'PORT': os.getenv('DB_PORT', '3306'),  # Usar variable de entorno para el puerto
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3'  # Cambia esto si estás usando otra base de datos
+    )
 }
-
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
