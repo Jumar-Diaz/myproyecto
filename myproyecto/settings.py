@@ -1,6 +1,8 @@
 from pathlib import Path
 import dj_database_url
 import os
+import urllib.parse
+from django.conf import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,11 +83,21 @@ WSGI_APPLICATION = 'myproyecto.wsgi.application'
 #        'PORT': os.getenv('DB_PORT', '3306'),  # Usar variable de entorno para el puerto
 #    }
 #}
+# Codifica la contraseña de la URL
+
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3'  # Cambia esto si estás usando otra base de datos
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'b0lk1mbpq23n3all4pef',
+        'USER': 'uvicw7yflqde8z63',
+        'PASSWORD': 'eryqx4yHBQfNHwFMMFUA',
+        'HOST': 'b0lk1mbpq23n3all4pef-mysql.services.clever-cloud.com',
+        'PORT': '3306'
+    }
 }
+
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
