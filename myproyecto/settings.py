@@ -14,7 +14,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-secret-key')  # Usar una varia
 DEBUG = False  # Cambiar a False para producción
 
 ALLOWED_HOSTS = [
-    'myproyecto.onrender.com',
+    'myproyecto-m9gh.onrender.com',
     'riotur.co',
     'www.riotur.co',
 ]
@@ -23,7 +23,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",  # Para desarrollo en Angular
     "https://riotur.co",      # Para el dominio de producción
     "https://www.riotur.co",  # Para el subdominio de producción
-    "https://myproyecto.onrender.com",  # El dominio de la API en Render
+    "https://myproyecto-m9gh.onrender.com",  # El dominio de la API en Render
 ]
 
 # Application definition
@@ -71,29 +71,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'myproyecto.wsgi.application'
 
 
-# Database
-# Cambia a la configuración de tu base de datos MySQL en Render
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': os.getenv('DB_NAME', 'turismo_db'),  # Usar variable de entorno para la base de datos
-#        'USER': os.getenv('DB_USER', 'turismo_user'),  # Usar variable de entorno para el usuario
-#        'PASSWORD': os.getenv('DB_PASSWORD', 'egk85x?{r^&7'),  # Usar variable de entorno para la contraseña
-#        'HOST': os.getenv('DB_HOST', 'localhost'),  # Usar variable de entorno para el host
-#        'PORT': os.getenv('DB_PORT', '3306'),  # Usar variable de entorno para el puerto
-#    }
-#}
-# Codifica la contraseña de la URL
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'b0lk1mbpq23n3all4pef',
-        'USER': 'uvicw7yflqde8z63',
-        'PASSWORD': 'eryqx4yHBQfNHwFMMFUA',
-        'HOST': 'b0lk1mbpq23n3all4pef-mysql.services.clever-cloud.com',
-        'PORT': '3306'
+        'NAME': 'bbxys4ynowhep7txyemp',
+        'USER': 'uifdezz7yx3fztbg',
+        'PASSWORD': 'Xkh16tRUUsNerNM1Lcj',
+        'HOST': 'bbxys4ynowhep7txyemp-mysql.services.clever-cloud.com',
+        'PORT': '21649'
     }
 }
 
