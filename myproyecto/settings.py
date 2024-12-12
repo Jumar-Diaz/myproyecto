@@ -14,6 +14,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-secret-key')  # Usar una varia
 DEBUG = False  # Cambiar a False para producción
 
 ALLOWED_HOSTS = [
+    '*',
     'myproyecto-m9gh.onrender.com',
     'riotur.co',
     'www.riotur.co',
