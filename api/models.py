@@ -9,6 +9,14 @@ class Recomendacion(models.Model):
     images = models.TextField();
     description = models.TextField()
 
+class RecomendacionMovil(models.Model):
+    Cluster = models.IntegerField()
+    Recomendacion = models.TextField()
+    images = models.TextField()
+    description = models.TextField()
+    #lat = models.TextField()
+    #lng = models.TextField()
+
 class Calificacion(models.Model):
     cluster = models.IntegerField()
     calification = models.IntegerField()

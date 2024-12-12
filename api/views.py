@@ -4,11 +4,12 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Recomendacion
-from .serializers import RecomendacionSerializer, CalificacionSerializer, CalificacionImageSerializer
+from .models import Recomendacion, RecomendacionMovil
+from .serializers import RecomendacionSerializer, CalificacionSerializer, CalificacionImageSerializer,RecomendacionSerializerMovil
 from .newRecomendacion import get_cluster_owa, get_reeomendacion
 from .pictures import obtenerClubster
 from .description import obtenerClubsterDescription
+from .descriptionMovil import obtenerClubsterDescriptionMovil
 import pandas as pd
 
 perfil_general = pd.read_excel("./data/V3_Analisis_cluster_escalar_datos.xlsx", sheet_name=0)
@@ -65,21 +66,7 @@ def recomendacion_view(request):
 
         print("perfil_turista: ", perfil_turista);
         #  print("Name: ", name);
-
-
         print("perfil: ", perfil_turista)
-
-
-        # print("DATA: ", data.perfil_turista);
-        # Crear o actualizar el perfil del turista
-        # turista, _ = Turista.objects.get_or_create(name=name)
-        # turista_serializer = TuristaSerializer(instance=turista, data={'name': name})
-        # if turista_serializer.is_valid():
-            # turista_serializer.save()
-        # else:
-            # return Response(turista_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-        # Realizar la recomendación usando la función recomendacion_turista
         cluster, recomendaciones = recomendacion_turista(perfil_turista)
         images = obtenerClubster(cluster)
         description = obtenerClubsterDescription(cluster)
@@ -93,6 +80,34 @@ def recomendacion_view(request):
 
         # Serializar y devolver los resultados
         recomendacion_serializer = RecomendacionSerializer(recomendacion)
+        return Response(recomendacion_serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+@api_view(['POST'])
+def recomendacionMovil_view(request):
+    if request.method == 'POST':
+        data = request.data
+        perfil_turista = data.get('perfil_turista', '')
+
+        cluster, recomendaciones = recomendacion_turista(perfil_turista)
+        images = obtenerClubster(cluster)
+        description = obtenerClubsterDescriptionMovil(cluster)
+        #lat = obtenerClubsterLat(cluster)
+        #lng = obtenerClubsterLng(cluster)
+
+        # Crear la recomendación en la base de datos
+        recomendacion = RecomendacionMovil.objects.create(
+            cluster=cluster,
+            recomendaciones=recomendaciones,
+            images=images,
+            description=description,
+            #lat=lat,
+            #lng=lng
+        )
+
+        # Serializar la recomendación con el nuevo serializador
+        recomendacion_serializer = RecomendacionSerializerMovil(recomendacion)
         return Response(recomendacion_serializer.data, status=status.HTTP_201_CREATED)
     else:
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
