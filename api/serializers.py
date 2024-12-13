@@ -5,6 +5,7 @@ class RecomendacionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recomendacion
         fields = '__all__'
+        
 class RecomendacionSerializerMovil(serializers.ModelField):
     class Meta:
         model = RecomendacionMovil

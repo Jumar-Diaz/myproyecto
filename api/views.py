@@ -10,6 +10,8 @@ from .newRecomendacion import get_cluster_owa, get_reeomendacion
 from .pictures import obtenerClubster
 from .description import obtenerClubsterDescription
 from .descriptionMovil import obtenerClubsterDescriptionMovil
+from .lat import obtenerClubsterLat
+from .lng import obtenerClubsterLng
 import pandas as pd
 
 perfil_general = pd.read_excel("./data/V3_Analisis_cluster_escalar_datos.xlsx", sheet_name=0)
@@ -93,8 +95,8 @@ def recomendacionMovil_view(request):
         cluster, recomendaciones = recomendacion_turista(perfil_turista)
         images = obtenerClubster(cluster)
         description = obtenerClubsterDescriptionMovil(cluster)
-        #lat = obtenerClubsterLat(cluster)
-        #lng = obtenerClubsterLng(cluster)
+        lat = obtenerClubsterLat(cluster)
+        lng = obtenerClubsterLng(cluster)
 
         # Crear la recomendación en la base de datos
         recomendacion = RecomendacionMovil.objects.create(
