@@ -15,19 +15,20 @@ DEBUG = False  # Cambiar a False para producción
 
 ALLOWED_HOSTS = [
     '*',
-    '192.168.10.19'
+    '192.168.10.19',
     'myproyecto-m9gh.onrender.com',
     'riotur.co',
     'www.riotur.co',
 ]
+CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOWED_ORIGINS = [
-    "https://localhost:4200",  # Para desarrollo en Angular
-    "https://192.168.10.19",
-    "https://riotur.co",      # Para el dominio de producción
-    "https://www.riotur.co",  # Para el subdominio de producción
-    "https://myproyecto-m9gh.onrender.com",  # El dominio de la API en Render
-]
+#CORS_ALLOWED_ORIGINS = [
+#    "https://localhost:4200",  # Para desarrollo en Angular
+#    "https://192.168.10.19",
+#    "https://riotur.co",      # Para el dominio de producción
+#    "https://www.riotur.co",  # Para el subdominio de producción
+#    "https://myproyecto-m9gh.onrender.com",  # El dominio de la API en Render
+#]
 
 # Application definition
 
@@ -129,10 +130,10 @@ REST_FRAMEWORK = {
 }
 
 # Seguridad adicional para producción
-#SECURE_SSL_REDIRECT = True
-#SECURE_HSTS_SECONDS = 3600  # 1 hora de seguridad HSTS
-#SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-#SECURE_BROWSER_XSS_FILTER = True
-#X_FRAME_OPTIONS = 'DENY'
-#CSRF_COOKIE_SECURE = True
-#SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 3600  # 1 hora de seguridad HSTS
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
