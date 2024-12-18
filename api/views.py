@@ -92,7 +92,9 @@ def recomendacionMovil_view(request):
         data = request.data
         perfil_turista = data.get('perfil_turista', '')
 
+
         cluster, recomendaciones = recomendacion_turista(perfil_turista)
+
         images = obtenerClubster(cluster)
         description = obtenerClubsterDescriptionMovil(cluster)
         lat = obtenerClubsterLat(cluster)
@@ -104,15 +106,18 @@ def recomendacionMovil_view(request):
             recomendaciones=recomendaciones,
             images=images,
             description=description,
-            #lat=lat,
-            #lng=lng
+            lat=lat,
+            lng=lng
         )
-
+    
         # Serializar la recomendación con el nuevo serializador
         recomendacion_serializer = RecomendacionSerializerMovil(recomendacion)
+
         return Response(recomendacion_serializer.data, status=status.HTTP_201_CREATED)
     else:
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
 
 @api_view(['GET'])
 def lista_recomendaciones(request):
