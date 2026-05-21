@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'myproyecto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bbxys4ynowhep7txyemp',
-        'USER': 'uifdezz7yx3fztbg',
-        'PASSWORD': 'Xkh16tRUUsNerNM1Lcj',
-        'HOST': 'bbxys4ynowhep7txyemp-mysql.services.clever-cloud.com',
-        'PORT': '21649'
+        'NAME': 'krioturk9_srioturs2_turismo_db',
+        'USER': 'krioturk9_srioturs2_admin_user',
+        'PASSWORD': 'CwI=0${qcNR9',
+        'HOST': 'wonder.hello.co',
+        'PORT': '3306'
     }
 }
 
